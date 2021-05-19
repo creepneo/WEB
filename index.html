@@ -42,7 +42,7 @@
           '/me',
           function (resp) {
             console.log(resp.name);
-            document.querySelector('#name').innerHTML = 'Welcome :'+resp.name;
+            document.querySelector('#name').innerHTML = resp.name;
 
           };
         );
