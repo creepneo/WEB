@@ -38,13 +38,7 @@
       FB.login(function(res){
         console.log('login =>', res);
         document.querySelector('#authBtn').value = 'Logout';
-        FB.api(
-          '/me',
-          function (resp) {
-            console.log(resp.name);
-            document.querySelector('#name').innerHTML = resp.name;
-          };
-        );
+        
       });
     } else  {
       FB.logout(function(res){
