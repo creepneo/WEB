@@ -7,6 +7,21 @@
   <script src="colors.js"></script>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
   <script>
+
+    function checkLoginStatus {
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected')  {
+          document.querySelector('#authBtn').value = 'Logout';
+          FB.login(function(res){
+            document.querySelector('#name').innerHTML = 'Welcome :' + res.name;
+          });
+        }
+        else {
+          document.querySelector('#authBtn').value = 'Login';
+        }
+      });
+    }
+
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '177898150895044',
@@ -15,18 +30,8 @@
         version    : 'v10.0'           // Use this Graph API version for this call.
       });
 
+    checkLoginStatus();
 
-
-      FB.getLoginStatus(function(response) {
-        console.log('getloginStatus -->');
-        console.log(response);
-        if (response.status === 'connected')  {
-          document.querySelector('#authBtn').value = 'Logout';
-        }
-        else {
-          document.querySelector('#authBtn').value = 'Login';
-        }
-      });
     };
   </script>
 </head>
@@ -34,18 +39,7 @@
 <body>
 
   <input type="button" id="authBtn" value="checking..." onclick="
-    if (this.value === 'Login') {
-      FB.login(function(res){
-        console.log('login =>', res);
-        document.querySelector('#authBtn').value = 'Logout';
-
-      });
-    } else  {
-      FB.logout(function(res){
-        console.log('logout =>', res);
-        document.querySelector('#authBtn').value = 'Login';
-      });
-    }
+    checkLoginStatus();
   ">
   <span id='name'></span>
 
