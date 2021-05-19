@@ -12,7 +12,7 @@
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected')  {
           document.querySelector('#authBtn').value = 'Logout';
-          FB.login(function(res){
+          FB.api('/me', function(res){
             document.querySelector('#name').innerHTML = 'Welcome :' + res.name;
           });
         }
@@ -39,7 +39,16 @@
 <body>
 
   <input type="button" id="authBtn" value="checking..." onclick="
-    checkLoginStatus();
+    if (this.value === 'Login') {
+      FB.login(function(resp){
+        checkLoginStatus ();
+      })
+    } else  {
+      FB.logout(function(resp){
+        checkLoginStatus ();
+      })
+    }
+
   ">
   <span id='name'></span>
 
