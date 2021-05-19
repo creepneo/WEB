@@ -39,10 +39,11 @@
         console.log('login =>', res);
         document.querySelector('#authBtn').value = 'Logout';
         FB.api(
-          "/me",
+          '/me',
           function (resp) {
-            document.querySelector('#name').innerHTML = resp.name;
             console.log(resp.name);
+            document.querySelector('#name').innerHTML = resp.name;
+
           }
         );
       });
