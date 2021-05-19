@@ -18,6 +18,7 @@
 
 
       FB.getLoginStatus(function(response) {
+        console.log('getloginStatus -->');
         console.log(response);
         if (response.status === 'connected')  {
           document.querySelector('#authBtn').value = 'Logout';
@@ -36,11 +37,13 @@
     if (this.value === 'Login') {
       FB.login(function(res){
         console.log('login =>', res);
+        document.querySelector('#authBtn').value = 'Logout';
       });
     } else  {
       FB.logout(function(res){
         console.log('logout =>', res);
-      });  
+        document.querySelector('#authBtn').value = 'Login';
+      });
     }
   ">
 
