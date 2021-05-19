@@ -8,8 +8,8 @@
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
   <script>
 
-    function checkLoginStatus (){
-      FB.getLoginStatus(function(response) {
+    function checkLoginStatus (response){
+
         if (response.status === 'connected')  {
           document.querySelector('#authBtn').value = 'Logout';
           FB.api('/me', function(res){
@@ -19,7 +19,7 @@
         else {
           document.querySelector('#authBtn').value = 'Login';
         }
-      });
+
     };
 
     window.fbAsyncInit = function() {
@@ -30,7 +30,9 @@
         version    : 'v10.0'           // Use this Graph API version for this call.
       });
 
-    checkLoginStatus();
+    FB.getLoginStatus(  function(response){
+      checkLoginStatus(response);
+    }
 
     };
   </script>
@@ -41,11 +43,11 @@
   <input type="button" id="authBtn" value="checking..." onclick="
     if (this.value === 'Login') {
       FB.login(function(resp){
-        checkLoginStatus ();
+        checkLoginStatus (resp);
       })
     } else  {
       FB.logout(function(resp){
-        checkLoginStatus ();
+        checkLoginStatus (resp);
       })
     }
 
