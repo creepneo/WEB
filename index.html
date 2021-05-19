@@ -8,7 +8,7 @@
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
   <script>
 
-    function checkLoginStatus {
+    function checkLoginStatus (
       FB.getLoginStatus(function(response) {
         if (response.status === 'connected')  {
           document.querySelector('#authBtn').value = 'Logout';
@@ -20,7 +20,7 @@
           document.querySelector('#authBtn').value = 'Login';
         }
       });
-    };
+    );
 
     window.fbAsyncInit = function() {
       FB.init({
