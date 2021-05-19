@@ -46,13 +46,9 @@
 
   <input type="button" id="authBtn" value="checking..." onclick="
     if (this.value === 'Login') {
-      FB.login(function(resp){
-        checkLoginStatus (resp);
-      })
+      FB.login(checkLoginStatus);
     } else  {
-      FB.logout(function(resp){
-        checkLoginStatus (resp);
-      })
+      FB.logout(checkLoginStatus);
     }
 
   ">
