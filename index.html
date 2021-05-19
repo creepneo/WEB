@@ -42,7 +42,7 @@
           '/me',
           function (resp) {
             console.log(resp.name);
-            document.querySelector('#name').innerHTML = resp.name;
+            document.querySelector('#name').innerHTML = 'Welcome :'+resp.name;
 
           };
         );
@@ -53,7 +53,7 @@
         document.querySelector('#authBtn').value = 'Login';
       });
     }
-  ">, <div id='name'></div>
+  "> : <span id='name'></span>
 
   <h1><a href="index.html">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
