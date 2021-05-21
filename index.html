@@ -47,7 +47,8 @@
   <input type="button" id="loginBtn" value="checking..." onclick="
     if (this.value === 'Login') {
       gauth.signIn({
-        scope : 'https://www.googleapis.com/auth/calendar'
+        scope : 'https://www.googleapis.com/auth/calendar',
+        scope : 'https://www.googleapis.com/auth/userinfo.profile'
       }).then(function(){
         console.log('gauth.signIn()');
         checkLoginStatus ();
