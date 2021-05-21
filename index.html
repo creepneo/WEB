@@ -16,8 +16,7 @@
         console.log('logined');
         loginBtn.value = 'Logout';
         var profile = gauth.currentUser.get().getBasicProfile ();
-        console.log(profile.getName());
-        nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'/<strong> ';
+        nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'</strong> ';
       } else {
         console.log('logouted');
         loginBtn.value = 'Login';
@@ -47,7 +46,9 @@
   <span id='name'></span>
   <input type="button" id="loginBtn" value="checking..." onclick="
     if (this.value === 'Login') {
-      gauth.signIn().then(function(){
+      gauth.signIn({
+        scope : 'https://www.googleapis.com/auth/calendar'
+      }).then(function(){
         console.log('gauth.signIn()');
         checkLoginStatus ();
       });
