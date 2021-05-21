@@ -11,9 +11,12 @@
 
     function checkLoginStatus () {
       var loginBtn = document.querySelector('#loginBtn');
+      var nameTxt = document.querySelector('#name');
       if(gauth.isSignedIn.get()){
-        console.log('11logined');
+        console.log('logined');
         loginBtn.value = 'Logout';
+        var profile = gauth.currentUser.get().getBasicProfile ();
+        console.log(profile);
       } else {
         console.log('logouted');
         loginBtn.value = 'Login';
@@ -39,6 +42,7 @@
 </head>
 <body>
 
+  <span id='name'></span>
   <input type="button" id="loginBtn" value="checking..." onclick="
     if (this.value === 'Login') {
       gauth.signIn().then(function(){
